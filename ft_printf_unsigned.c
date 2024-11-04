@@ -1,23 +1,5 @@
 #include "ft_printf.h"
 
-char	*ft_utioa(unsigned int n)
-{
-	char	*nbr;
-	int		len;
-
-	len = ft_numlen(n);
-	nbr = (char *)malloc(sizeof(char) * len);
-	if (!nbr)
-		return (NULL);
-	nbr[len] = '\0';
-	while (n != 0)
-	{
-		nbr[--len] = n % 10 + 48;
-		n /= 10;
-	}
-	return (nbr);
-}
-
 int	ft_printunsigned(unsigned int n)
 {
 	int		len;
