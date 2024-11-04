@@ -1,24 +1,17 @@
-NAME		= libftprintf.a
+NAME		= printf.a
 EXEC 		= a.out
 
-SRC_PATH	= src
-SRCB_PATH	= srcb
+SRC_PATH	= .
 INC_PATH	= inc/
 BUILD_PATH	= .build
 
 LIBFT_PATH	= $(INC_PATH)libft/
 LIBFT_ARC	= $(LIBFT_PATH)libft.a
 
-SRC 		= $(addprefix $(SRC_PATH)/, ft_printf.c ft_parse.c \
-			  ft_print_chars.c ft_print_diu.c ft_print_hex.c ft_print_ptr.c)
-
-SRCB		= $(addprefix $(SRCB_PATH)/, ft_printf_bonus.c ft_parse_bonus.c \
-			  ft_print_c_bonus.c ft_print_s_bonus.c ft_print_di_bonus.c \
-			  ft_print_u_bonus.c ft_print_hex_bonus.c ft_print_p_bonus.c \
-			  ft_flags_bonus.c ft_flag_utils_bonus.c ft_print_f_bonus.c)
+SRC 		= $(addprefix $(SRC_PATH)/, ft_printf.c ft_printf_adds.c\
+				  ft_printf_hex.c ft_printf_ptr.c ft_printf_unsigned.c)
 
 OBJS 		= $(addprefix $(BUILD_PATH)/,$(notdir $(SRC:.c=.o)))
-OBJSB 		= $(addprefix $(BUILD_PATH)/,$(notdir $(SRCB:.c=.o)))
 
 #==============================================================================#
 #                            FLAGS & CMDS                                      #
@@ -66,11 +59,6 @@ $(NAME): $(LIBFT_ARC) $(BUILD_PATH) $(OBJS)
 	$(AR) $(NAME) $(OBJS) $(LIBFT_ARC) -o $(NAME)
 	@echo "\n\t$(GRN)SUCCESS!$(D)\n"
 
-bonus: $(LIBFT_ARC) $(BUILD_PATH) $(OBJSB)	## Compile ft_printf with bonus
-	@echo "\nBuilding archive with bonus..."
-	$(AR) $(NAME) $(OBJSB)
-	@echo "\n\t$(GRN)SUCCESS!$(D)\n"
-
 deps:			## Download/Update libft
 	@if test ! -d "$(LIBFT_PATH)"; then make get_libft; \
 		else echo "$(YEL)[libft]$(D) folder found"; fi
@@ -84,15 +72,8 @@ update_modules:	## Update modules
 
 get_libft:
 	@echo "[$(CYA)Getting Libft submodule$(D)]"
-	git clone git@github.com:PedroZappa/libft.git $(LIBFT_PATH)
+	git clone git@github.com:4Rr0x/42_libft.git $(LIBFT_PATH)
 	@echo "[$(GRN)Libft submodule successfully downloaded$(D)]"
-
-##@ Debug & Testing Rules 󰃢
-
-test: all		## Run ft_printf's test
-	@echo "[$(YEL)Compiling main.c for test$(D)]"
-	$(CC) $(CFLAGS) main.c $(SRCB) $(LIBFT_ARC) -o $(EXEC)
-	./$(EXEC)
 
 ##@ Clean-up Rules 󰃢
 
@@ -115,7 +96,7 @@ libclean: fclean	## Remove libft
 	$(RM) $(INC_PATH)
 	@echo "==> $(GRN)inc folder successfully removed!$(D)\n"
 
-re: fclean bonus	## Purge and Recompile
+re: fclean all	## Purge and Recompile
 
 ##@ Help 󰛵
 

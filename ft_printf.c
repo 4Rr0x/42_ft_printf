@@ -17,6 +17,11 @@ int	ft_checkformat(va_list args, const char format)
 		len += ft_printstr((va_arg(args, char *)));
 	else if (format == 'p')
 		len += ft_printptr((va_arg(args, unsigned long long)));
+	else if (format == 'x' || format == 'X')
+		len += ft_printhex((va_arg(args, unsigned int)), format);
+	else if (format == '%')
+		len += write (1, "%", 1);
+	return (len);
 }
 
 int	ft_printf(const char *format, ...)
