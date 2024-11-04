@@ -1,4 +1,4 @@
-NAME		= printf.a
+NAME		= libftprintf.a
 EXEC 		= a.out
 
 SRC_PATH	= .
@@ -8,8 +8,8 @@ BUILD_PATH	= .build
 LIBFT_PATH	= $(INC_PATH)libft/
 LIBFT_ARC	= $(LIBFT_PATH)libft.a
 
-SRC 		= $(addprefix $(SRC_PATH)/, ft_printf.c ft_printf_adds.c\
-				  ft_printf_hex.c ft_printf_ptr.c ft_printf_unsigned.c)
+SRC 		= $(addprefix $(SRC_PATH)/, ft_printf.c ft_printf_hex.c \
+			  ft_printf_ptr.c ft_printf_unsigned.c)
 
 OBJS 		= $(addprefix $(BUILD_PATH)/,$(notdir $(SRC:.c=.o)))
 

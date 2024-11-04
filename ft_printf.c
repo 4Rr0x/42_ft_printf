@@ -1,20 +1,14 @@
 #include "ft_printf.h"
 
-int	ft_printchar(int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
 int	ft_checkformat(va_list args, const char format)
 {
 	int	len;
 
 	len = 0;
 	if (format == 'c')
-		len += ft_printchar((va_arg(args, int)));
+		len += ft_putchar_fd((va_arg(args, int)), 1);
 	else if (format == 's')
-		len += ft_printstr((va_arg(args, char *)));
+		len += ft_putstr_fd((va_arg(args, char *)), 1);
 	else if (format == 'p')
 		len += ft_printptr((va_arg(args, unsigned long long)));
 	else if (format == 'x' || format == 'X')
@@ -36,7 +30,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 			len += ft_checkformat(ap, *format++);
 		else
-			ft_printchar(*format);
+			ft_putchar_fd(*format, 1);
 	}
 	va_end(ap);
 	return (len);

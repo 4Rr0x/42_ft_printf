@@ -11,7 +11,7 @@ int	ft_printunsigned(unsigned int n)
 	else
 	{
 		nbr = ft_uitoa(n);
-		len += ft_putstr(nbr);
+		len += ft_putstr_fd(nbr, 1);
 		free(nbr);
 	}
 	return (len);
