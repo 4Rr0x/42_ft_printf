@@ -20,8 +20,9 @@ OBJS 		= $(addprefix $(BUILD_PATH)/,$(notdir $(SRC:.c=.o)))
 # SHELL := zsh
 
 MAKE		= make -C
-CFLAGS		= -Wall -Wextra -Werror
-CFLAGS		+= -g
+#CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -g
+#CFLAGS		+= -fsanitize=address -fsanitize=undefined -fsanitize=leak 
 # CFLAGS		+= -lm
 INC			= -I.
 
@@ -62,7 +63,7 @@ $(NAME): $(LIBFT_ARC) $(BUILD_PATH) $(OBJS)
 deps:			## Download/Update libft
 	@if test ! -d "$(LIBFT_PATH)"; then make get_libft; \
 		else echo "$(YEL)[libft]$(D) folder found"; fi
-	@make update_modules
+##	@make update_modules
 
 update_modules:	## Update modules
 	@echo "[$(CYA)Updating submodules$(D)]"
@@ -74,6 +75,11 @@ get_libft:
 	@echo "[$(CYA)Getting Libft submodule$(D)]"
 	git clone git@github.com:4Rr0x/42_libft.git $(LIBFT_PATH)
 	@echo "[$(GRN)Libft submodule successfully downloaded$(D)]"
+
+test: all		## Run ft_printf's test
+	@echo "[$(YEL)Compiling main.c for test$(D)]"
+	$(CC) $(CFLAGS) main.c $(SRC) $(LIBFT_ARC) -o $(EXEC)
+	./$(EXEC)
 
 ##@ Clean-up Rules 󰃢
 

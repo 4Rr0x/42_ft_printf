@@ -11,5 +11,6 @@ int		ft_printptr(unsigned long long ptr);
 int		ft_printunsigned(unsigned int n);
 int		ft_printhex(unsigned int nbr, const char format);
 void	ft_puthex(unsigned int nbr, char *hex);
+char	*ft_uitoa(unsigned int);
 
 #endif
