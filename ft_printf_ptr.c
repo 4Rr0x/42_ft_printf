@@ -1,35 +1,6 @@
 #include "ft_printf.h"
 #include "inc/libft/libft/libft.h"
 
-int	ft_ptrlen(uintptr_t ptr)
-{
-	int	len;
-
-	len = 0;
-	while (ptr != 0)
-	{
-		ptr /= 16;
-		len++;
-	}
-	return (len);
-}
-
-void	ft_putptr(uintptr_t ptr)
-{
-	if (ptr >= 16)
-	{
-		ft_putptr(ptr / 16);
-		ft_putptr(ptr % 16);
-	}
-	else
-	{
-		if (ptr <= 9)
-			ft_putchar_fd((ptr + '0'), 1);
-		else
-			ft_putchar_fd((ptr - 10 + 'a'), 1);
-	}
-}
-
 int	ft_printptr(unsigned long long ptr)
 {
 	int	len;
