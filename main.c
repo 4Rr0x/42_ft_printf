@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jopedro- <jopedro-@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/07 13:30:17 by jopedro-          #+#    #+#             */
+/*   Updated: 2024/11/07 13:30:20 by jopedro-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "inc/libft/libft/libft.h"
 
@@ -130,13 +142,12 @@ void extra(void)
 int main(void)
 {
 	extra();
-	//test_c();
-	//test_s();
-	//test_p();
-	//test_d();
-	//test_i();
-	//test_u();
-	//test_x();
-	//test_X();
-
+	test_c();
+	test_s();
+	test_p();
+	test_d();
+	test_i();
+	test_u();
+	test_x();
+	test_X();
 }
