@@ -20,7 +20,7 @@ OBJS 		= $(addprefix $(BUILD_PATH)/,$(notdir $(SRC:.c=.o)))
 # SHELL := zsh
 
 MAKE		= make -C
-#CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror
 CFLAGS		= -g
 #CFLAGS		+= -fsanitize=address -fsanitize=undefined -fsanitize=leak 
 # CFLAGS		+= -lm
