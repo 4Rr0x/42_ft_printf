@@ -137,17 +137,19 @@ void extra(void)
 	printf("%i\n", printf(" %x %x %x %x %x %x %x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
 	printf("%i\n", ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0));
 	printf("%i\n", printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0));
+	ft_printf("NULL %s NULL\n", NULL);
+	printf("NULL %s NULL\n", NULL);
 }
 
 int main(void)
 {
 	extra();
-	test_c();
-	test_s();
-	test_p();
-	test_d();
-	test_i();
-	test_u();
-	test_x();
-	test_X();
+	//test_c();
+	//test_s();
+	//test_p();
+	//test_d();
+	//test_i();
+	//test_u();
+	//test_x();
+	//test_X();
 }

@@ -50,7 +50,8 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 			len += ft_putchar_fd(*format, 1);
-		format++;
+		if(*format)
+			format++;
 	}
 	va_end(ap);
 	return (len);
